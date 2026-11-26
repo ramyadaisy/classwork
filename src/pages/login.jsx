@@ -1,31 +1,34 @@
 import { useState } from "react";
-
-
+import { useNavigate } from "react-router-dom";
 function Login() {
-    const[email, setEmail] = useState("")
-  const[pass, setPass] = useState("")
-  const handlesubmit = (event)=>{
-    event.preventDefault();
-    console.log(email, pass)
+  const navigate = useNavigate
+  const [formData, setFormData] = useState({ username: "", password: "" });
+
+  function handleChange(e) {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   }
-    return ( 
-    <>
-      <div>Hi</div>
-      {/*}
-      <input type="email" required placeholder="Enter your email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
-      <input type="password" required placeholder="Enter your password" value={pass} onChange={(e)=>{setPass(e.target.value)} }/>
-      <button type="submit" onClick={()=>console.log(email,pass)}>Submit</button>
-      <button type="submit" onClick={()=>print()}>Submit</button>
-      */}
-      
-      <form onSubmit={handlesubmit}>
-        <input type="email" required placeholder="Enter your email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
-        <input type="password" required placeholder="Enter your password" value={pass} onChange={(e)=>{setPass(e.target.value)} }/>
-        <button type="submit" >Submit</button>
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    alert("Login Successfully");
+    navigate("/dashboard",{
+      state:formData
+    })
+    console.log(formData);
+  }
+
+  return (
+    <div>
+      <h1>Login Page</h1>
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="username" placeholder="Enter Username" value={formData.username} onChange={handleChange} required />
+        <br />
+        <input type="password" name="password" placeholder="Enter Password" value={formData.password} onChange={handleChange} required />
+        <br />
+        <button type="submit">Login</button>
       </form>
-    </>
-    
-     );
+    </div>
+  );
 }
 
 export default Login;
