@@ -5,7 +5,7 @@ function Login() {
     const[email, setEmail] = useState("")
   const[pass, setPass] = useState("")
   const handlesubmit = (event)=>{
-    event.preventDefalut();
+    event.preventDefault();
     console.log(email, pass)
   }
     return ( 
