@@ -5,9 +5,9 @@ import Tasks from './pages/tasks';
 import Team from './pages/team';
 import Clients from './pages/clients';
 import Dashboard from './pages/dashboard';
-import Calenders  from "./pages/calender";
+import Calendar  from "./pages/calendar";
 import Settings from "./pages/settings";
-import Register from "./pages/register";
+import Registers from './pages/registers';
 
 
 function App() {
@@ -20,9 +20,9 @@ function App() {
         <Route path="/team" element={<Team/>}/>
         <Route path="/clients" element={<Clients/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
-        <Route path="/calenders" element={<Calenders/>}/>
+        <Route path="/calendar" element={<Calendar/>}/>
         <Route path="/settings" element={<Settings/>}/>
-        <Route path="/register" element={<Register/>}/>
+        <Route path="/registers" element={<Registers/>}/>
       </Routes>
     </BrowserRouter>
   );
