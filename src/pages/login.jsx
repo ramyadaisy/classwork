@@ -37,7 +37,7 @@ function Login() {
         state: logindata
       });
     } else {
-      console.log("Invalid credentials");
+      console.log("Invalid credentials.");
     }
   };
 
