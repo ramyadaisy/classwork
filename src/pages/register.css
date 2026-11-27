@@ -1,0 +1,45 @@
+
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: lightgray;
+}
+
+.register-box {
+  background-color: lightpink;
+  padding: 25px;
+  width: 300px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.register-box h2 {
+  margin-bottom: 20px;
+  color: purple;
+  font-weight: bold;
+}
+
+.register-box input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.register-box p {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.register-box button {
+  width: 100%;
+  padding: 10px;
+  background-color: purple;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

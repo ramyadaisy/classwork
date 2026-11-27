@@ -1,32 +1,77 @@
+
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import "./login.css";
+
 function Login() {
-  const navigate = useNavigate()
-  const [formData, setFormData] = useState({ username: "", password: "" });
 
-  function handleChange(e) {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const [logindata, setLogindata] = useState({
+    username: "",
+    password: ""
+  });
+
+  function handlechange(e) {
+    setLogindata({
+      ...logindata,
+      [e.target.name]: e.target.value
+    });
   }
 
-  function handleSubmit(e) {
+  const formsubmit = (e) => {
     e.preventDefault();
-    alert("Login Successfully");
-    navigate("/dashboard",{
-      state:formData
-    })
-    console.log(formData);
-  }
+
+    const registerdata = location.state;
+
+    console.log("Login data", logindata);
+    console.log("Register data", registerdata);
+
+    if (
+      registerdata &&
+      logindata.username === registerdata.name &&
+      logindata.password === registerdata.password
+    ) {
+      navigate("/dashboard", {
+        state: logindata
+      });
+    } else {
+      console.log("Invalid credentials");
+    }
+  };
 
   return (
-    <div>
-      <h1>Login Page</h1>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="username" placeholder="Enter Username" value={formData.username} onChange={handleChange} required />
-        <br />
-        <input type="password" name="password" placeholder="Enter Password" value={formData.password} onChange={handleChange} required />
-        <br />
-        <button type="submit">Login</button>
-      </form>
+    <div className="login-container">
+
+      <div className="login-box">
+
+        <h2>Login</h2>
+
+        <form onSubmit={formsubmit}>
+
+          <input
+            type="text"
+            placeholder="Enter your username"
+            required
+            name="username"
+            onChange={handlechange}
+          />
+
+          <input
+            type="password"
+            placeholder="Enter your password"
+            required
+            name="password"
+            onChange={handlechange}
+          />
+
+          <button type="submit">Login</button>
+
+        </form>
+
+      </div>
+
     </div>
   );
 }
